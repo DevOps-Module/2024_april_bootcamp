@@ -1,0 +1,40 @@
+#Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: theo-app
+  labels:
+    app: theo-app
+spec:
+ replicas: 4
+ selector:
+   matchLabels:
+     app: theo-app
+ template:
+   metadata:
+     labels:
+       app: theo-app
+   spec:
+     containers:
+     - name: sunday-con
+       image: mobanntechnologies/april24:240824
+       ports:
+       - containerPort: 8080
+
+---
+#Service Type nodePort
+apiVersion: v1
+kind: Service
+metadata:
+  name: theo-app
+  labels:
+    app: theo-app
+spec:
+  selector:
+    app: theo-app
+  type: NodePort
+  ports:
+  - nodePort: 30100
+    port: 8080
+    targetPort: 8080
+
