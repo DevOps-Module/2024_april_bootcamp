@@ -118,7 +118,7 @@ pipeline {
                   sshagent(['ssh_agent']) {
                         //sh "ssh -i mo-oregon-kp.pem -o StrictHostKeyChecking=no ubuntu@52.27.146.236 -C \"kubectl set image deployment/ranty customcontainer=mobanntechnologies/july-set:${BUILD_NUMBER}\"" 
                         //sh "ssh -i mo-oregon-kp.pem -o StrictHostKeyChecking=no ubuntu@18.135.243.72 -C \"kubectl delete deployment ranty && kubectl delete service ranty\""
-                        sh "ssh -i mo-london-kp.pem -o StrictHostKeyChecking=no ubuntu@18.135.243.72 -C \"kubectl apply -f deploy_service.yaml\""
+                        sh "ssh -i mo-london-kp.pem -o StrictHostKeyChecking=no ubuntu@18.135.243.72 -C \"kubectl apply -f deploy.yaml\""
                         //sh "ssh -i mo-oregon-kp.pem -o StrictHostKeyChecking=no ubuntu@52.27.146.236 -C \"kubectl apply -f service.yaml\""
                     }
                 }  
